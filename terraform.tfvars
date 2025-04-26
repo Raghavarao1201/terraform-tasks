@@ -8,3 +8,6 @@ igw_name   = "task_igw"
 ec2_ami_id     = "ami-084568db4383264d4"
 ec2_instance_type = "t2.micro"
 ec2_key_name     = "hcl"
+private_key_file = "/workspaces/terraform-tasks/security/hcl.pem"
+ssh_user   = "ubuntu"
+

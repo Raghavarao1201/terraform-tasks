@@ -47,3 +47,13 @@ variable "ec2_key_name" {
   type        = string
   description = "Name of the EC2 key pair"
 }
+
+variable "private_key_file" {
+  type = string
+  description = "Path to the private key file"
+}
+
+variable "ssh_user" {
+  type = string
+  description = "Username for SSH connection"
+}

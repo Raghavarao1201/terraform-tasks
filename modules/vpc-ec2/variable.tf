@@ -47,3 +47,13 @@ variable "key_name" {
   description = "The key pair"
   type        = string
 }
+
+variable "private_key_path" {
+  description  = "Key pair path"
+  type    = string
+}
+
+variable "ssh_username" {
+  type = string
+  description = "Username for SSH connection"
+}

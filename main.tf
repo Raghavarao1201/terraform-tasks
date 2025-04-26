@@ -11,4 +11,6 @@ module "vpc-ec2" {
   ami_id                    = var.ec2_ami_id
   instance_type             = var.ec2_instance_type
   key_name                  = var.ec2_key_name
+  private_key_path          = var.private_key_file
+  ssh_username              = var.ssh_user
 }

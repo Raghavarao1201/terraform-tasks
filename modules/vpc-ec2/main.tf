@@ -70,20 +70,24 @@ resource "aws_instance" "server" {
     subnet_id     = aws_subnet.public_subnet.id
     vpc_security_group_ids = [aws_security_group.ec2_sg.id]
 
-    user_data = <<-EOF
-  #!/bin/bash
-  sudo apt update -y
-  # Install Docker
-  curl -fsSL https://get.docker.com -o install-docker.sh
-  sudo sh install-docker.sh
-  sudo usermod -aG docker $USER
-  newgrp docker
+    provisioner "remote-exec" {
+    inline = [
+      "sudo apt update -y",
+      "sudo apt install -y nginx",
+      "sudo systemctl start nginx",
+      "sudo systemctl enable nginx",
+      "echo '<h1>Hello from Terraform!</h1>' | sudo tee /var/www/html/index.nginx-debian.html",
+    ]
+  }
 
-  # Install Nginx
-  sudo apt install -y nginx
-  sudo systemctl start nginx
-  EOF
+  connection {
+    type        = "ssh"
+    user        = var.ssh_username
+    private_key = file(var.private_key_path)
+    host        = self.public_ip
+  }
 }
+    
 
 
 resource "aws_security_group" "ec2_sg" {
