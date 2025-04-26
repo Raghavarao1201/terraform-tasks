@@ -107,6 +107,6 @@ jobs:
         working-directory: ./
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
-      #- name: Terraform Destroy
-        # id: destroy
-        # run: terraform destroy -auto-approve -lock=false
+      - name: Terraform Destroy
+        id: destroy
+        run: terraform destroy -auto-approve -lock=false -var-file="terraform.tfvars"
