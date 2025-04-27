@@ -101,18 +101,18 @@ jobs:
         id: get_report_path
         run: echo "${{ needs.terraform_tasks.outputs.report_path }}"
 
-      - name: Commit and push the report
-        run: |
-          ls -al reports/report.txt
-          cat reports/report.txt
-          git config --global user.name "Raghavarao1201"
-          git config --global user.email "raghavaraomachiraju@gmail.com"
-          git add reports/report.txt
-          git commit -m "Add deployment report"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        working-directory: ./
+     # - name: Commit and push the report
+      #  run: |
+         # ls -al reports/report.txt
+         # cat reports/report.txt
+         # git config --global user.name "Raghavarao1201"
+         # git config --global user.email "raghavaraomachiraju@gmail.com"
+        #  git add reports/report.txt
+         # git commit -m "Add deployment report"
+        #  git push
+      #  env:
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #working-directory: ./
 
   comment_plan_pr:
     name: Comment Plan on Pull Request
