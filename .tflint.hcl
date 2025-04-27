@@ -1,6 +1,6 @@
 plugin "aws" {
   enabled = true
-  version = ">= 0.30.0" # Specify a version or version constraint
+  version = ">= 0.39.0" # Specify a version or version constraint
   source  = "github.com/terraform-linters/tflint-plugin-aws"
   region  = "us-east-1"
 }
