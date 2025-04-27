@@ -1,6 +1,8 @@
 plugin "aws" {
   enabled = true
-  region = "us-east-1"
+  version = ">= 0.30.0" # Specify a version or version constraint
+  source  = "github.com/terraform-linters/tflint-plugin-aws"
+  region  = "us-east-1"
 }
 
 rule "aws_instance_invalid_type" {
