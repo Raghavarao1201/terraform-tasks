@@ -86,8 +86,8 @@ jobs:
         working-directory: ./
       - name: Commit and push the report
         run: |
-          git config --global user.name "Raghavarao1201"
-          git config --global user.email "raghavaraomachiraju@gmail.com"
+          git config --global user.name "Raghava1201"
+          git config --global user.email "machirajuraghavarao@gmail.com"
           git add reports/report.txt
           git commit -m "Add deployment report"
           git push
