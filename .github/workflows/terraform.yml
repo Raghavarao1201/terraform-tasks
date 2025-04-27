@@ -65,7 +65,7 @@ jobs:
         working-directory: ./
 
       - name: Validate Terraform
-        id: fmt and validate
+        id: fmt_and_validate
         run: terraform fmt && terraform validate
         working-directory: ./
 
