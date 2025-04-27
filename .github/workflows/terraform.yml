@@ -42,11 +42,6 @@ jobs:
           sudo mv tflint /usr/local/bin/
           tflint --version
 
-      - name: Install TFlint AWS Plugin
-        run: |
-          tflint --init
-          tflint --plugin-dir /home/runner/.tflint.d/plugins --install tflint-plugin-aws
-
       - name: Run TFlint
         id: tflint
         run: tflint --init && tflint -f compact
