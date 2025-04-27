@@ -25,3 +25,11 @@ rule "terraform_documented_variables" {
   enabled = true
 }
 
+rule "aws_instance_required_tags" {
+   enabled = true
+   tags = [
+     "Environment"
+   ]
+}
+
+
