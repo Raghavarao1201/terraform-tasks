@@ -103,6 +103,8 @@ jobs:
 
       - name: Commit and push the report
         run: |
+          ls -al reports/report.txt
+          cat reports/report.txt
           git config --global user.name "Raghavarao1201"
           git config --global user.email "raghavaraomachiraju@gmail.com"
           git add reports/report.txt
