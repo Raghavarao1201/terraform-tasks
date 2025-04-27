@@ -59,6 +59,24 @@ jobs:
         run: checkov -d . --framework terraform --soft-fail
         working-directory: ./
 
+      - name: Generate Terraform Plan
+        id: plan
+        run: terraform plan -var-file="terraform.tfvars" -lock=false > plan.txt
+        working-directory: ./
+
+      - name: Create Plan Output Text File
+        id: plan_report
+        run: |
+          mkdir -p reports
+          echo "#Deployment Report" > reports/report_1.txt
+          echo "This file was generated during the github actions workflow run." >> reports/report_1.txt
+          echo "" >> reports/report_1.txt
+          echo "## Terraform Plan Output" >> reports/report_1.txt
+          cat plan.txt >> reports/report_1.txt
+          echo "report_path=reports/report_1.txt" >> "$GITHUB_OUTPUT"
+        working-directory: ./
+        shell: bash
+
   stage_two:
     name: Stage 2 - Terraform Validation and Plan
     runs-on: ubuntu-latest
@@ -107,7 +125,9 @@ jobs:
           echo "" >> reports/report_1.txt
           echo "## Terraform Plan Output" >> reports/report_1.txt
           cat plan.txt >> reports/report_1.txt
+          echo "report_path=reports/report_1.txt" >> "$GITHUB_OUTPUT"
         working-directory: ./
+        shell: bash
 
   stage_three:
     name: Stage 3 - Reporting and Apply
