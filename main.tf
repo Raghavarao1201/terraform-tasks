@@ -28,7 +28,7 @@ module "s3_bucket" {
 }
 
 module "dynamodb_table" {
-  source      = "git::github.com/Raghava1201/use-case-4//modules/dynamodb"
+  source      = "git::https://github.com/Raghava1201/use-case-4.git//modules/dynamodb"
   version     = "v1.0.0"
   table_name  = var.dynamodb_table_name
   billing_mode = "PAY_PER_REQUEST"
