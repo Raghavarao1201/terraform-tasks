@@ -114,8 +114,17 @@ jobs:
 
       - name: Apply Terraform
         id: apply
-        run: terraform apply -auto-approve -lock=false -var-file="terraform.tfvars"
+        run: |
+           export TF_LOG="DEBUG"
+           terraform apply -auto-approve -lock=false -var-file="terraform.tfvars"
         working-directory: ./
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+      - name: Upload Terraform Logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraform-logs
+          path: log.txt
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
       #- name: Terraform Destroy
