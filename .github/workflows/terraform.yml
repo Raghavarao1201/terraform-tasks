@@ -127,6 +127,6 @@ jobs:
           path: log.txt
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
-      #- name: Terraform Destroy
-        #id: destroy
-        #run: terraform destroy -auto-approve -lock=false -var-file="terraform.tfvars"
+      - name: Terraform Destroy
+        id: destroy
+        run: terraform destroy -auto-approve -lock=false -var-file="terraform.tfvars"
