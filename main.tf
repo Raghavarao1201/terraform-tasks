@@ -14,3 +14,27 @@ module "vpc-ec2" {
   private_key_path          = var.private_key_file
   ssh_username              = var.ssh_user
 }
+
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket = "terraform-tasks"
+  acl    = "private"
+
+  versioning = {
+    enabled = true
+  }
+}
+
+module "dynamodb_table" {
+  source      = "github.com/Raghava1201/use-case-4//modules/dynamodb"
+  table_name  = var.dynamodb_table_name
+  billing_mode = "PAY_PER_REQUEST"
+  attributes = [
+    {
+      name = "UserID"
+      type = "S"
+    }
+  ]
+  hash_key = "UserID"
+}
