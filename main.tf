@@ -18,6 +18,7 @@ module "vpc-ec2" {
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
   version = "4.7.0"
+  region = "us-east-1"
 
   bucket = "terraform-tasks"
   acl    = "private"
