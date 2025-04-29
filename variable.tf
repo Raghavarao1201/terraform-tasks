@@ -57,3 +57,9 @@ variable "ssh_user" {
   type = string
   description = "Username for SSH connection"
 }
+
+variable "dynamodb_table_name" {
+  type  = string
+  description = "Name of the dynamodb table"
+  default = "terraform-tasks"
+}
