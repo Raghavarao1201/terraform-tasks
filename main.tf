@@ -17,6 +17,7 @@ module "vpc-ec2" {
 
 module "s3_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
+  version = "1.19.0"
 
   bucket = "terraform-tasks"
   acl    = "private"
@@ -28,6 +29,7 @@ module "s3_bucket" {
 
 module "dynamodb_table" {
   source      = "github.com/Raghava1201/use-case-4//modules/dynamodb"
+  version     = "v1.0.0"
   table_name  = var.dynamodb_table_name
   billing_mode = "PAY_PER_REQUEST"
   attributes = [
