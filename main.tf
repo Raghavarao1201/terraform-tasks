@@ -15,24 +15,6 @@ module "vpc-ec2" {
   ssh_username              = var.ssh_user
 }
 
-module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-  version  = "4.7.0"
-
-  providers = {
-    aws = aws.east
-  }
-
-  bucket = "terraform-tasks"
-
-  control_object_ownership = true
-  object_ownership         = "ObjectWriter"
-
-  versioning = {
-    enabled = true
-  }
-}
-
 module "dynamodb_table" {
   source      = "git::https://github.com/Raghava1201/use-case-4.git//modules/dynamodb"
   #version     = "v1.0.0"
